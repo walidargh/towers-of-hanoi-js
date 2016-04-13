@@ -49,12 +49,11 @@ HanoiView.prototype.clickTower = function () {
   var tower = this;
   $("ul").click(function() {
     if (tower.startTower !== undefined) {
-
       tower.endTower = $(this).index();
       tower.game.move(tower.startTower, tower.endTower);
       tower.render();
       if (tower.game.isWon()) {
-        $('h1').append('.marquee');
+        $('h1').append('<marquee>You Won</marquee>');
         $('ul').remove();
         new HanoiView(new Game(),$('.hanoi'));
       }
