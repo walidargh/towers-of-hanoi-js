@@ -53,9 +53,13 @@ HanoiView.prototype.clickTower = function () {
       tower.game.move(tower.startTower, tower.endTower);
       tower.render();
       if (tower.game.isWon()) {
-        $('h1').append('<marquee>You Won</marquee>');
+        $('h1').append('<marquee scrollamount=\"20\">You Won</marquee>');
         $('ul').remove();
-        new HanoiView(new Game(),$('.hanoi'));
+        setTimeout(function () {
+          $('marquee').remove();
+          new HanoiView(new Game(),$('.hanoi'));
+        }, 5000);
+
       }
       tower.startTower = undefined;
     } else {
